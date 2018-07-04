@@ -3,11 +3,15 @@
     <button mat-icon-button (click)="toggleSideNav()">
       <mat-icon>menu</mat-icon></button>
   </div>
-  <div fxHide.xs>
-    <img src="../../../assets/fitness.png" style="margin-top: 7px" width="60px" alt="">
-  </div>
-  <div fxShow.xs fxHide.gt-xs>
-    <img src="../../../assets/fitness.png" style="margin-top: 10px" width="40px" alt="">
+  <div>
+    <a routerLink="/">
+      <div fxHide.xs>
+        <img src="../../../assets/fitness.png" style="margin-top: 7px" width="60px" alt="">
+      </div>
+      <div fxShow.xs fxHide.gt-xs>
+        <img src="../../../assets/fitness.png" style="margin-top: 10px" width="40px" alt="">
+      </div>
+    </a>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
