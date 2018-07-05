@@ -74,7 +74,7 @@ export class TrainingService {
         this.finishedExercisesChanged.next(exercises);
       }));
   }
-  cancelSubscription() {
+  cancelSubscriptions() {
     this.fbSubs.forEach(sub => {sub.unsubscribe(); });
   }
   private addDataToDatabase(exercise: Exercise) {

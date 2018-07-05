@@ -25,6 +25,7 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireStorageModule} from 'angularfire2/storage';
+import {UiService} from './shared/ui.service';
 
 
 @NgModule({
@@ -55,7 +56,7 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     AngularFireDatabaseModule,
     AngularFireStorageModule
   ],
-  providers: [AuthService, TrainingService],
+  providers: [AuthService, TrainingService, UiService],
   bootstrap: [AppComponent],
   entryComponents: [StopTrainingComponent]
 })
