@@ -26,6 +26,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireStorageModule} from 'angularfire2/storage';
 import {UiService} from './shared/ui.service';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {UiService} from './shared/ui.service';
     WelcomeComponent,
     HeaderComponent,
     SidenavListComponent,
-    StopTrainingComponent
+    StopTrainingComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
