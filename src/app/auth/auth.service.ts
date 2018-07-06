@@ -65,11 +65,11 @@ export class AuthService {
   }
 
   logout() {
-    this.afAuth.auth.signOut().then(
+    this.uiService.showSnackbar('Logged Out!', null, 1000);
+    setTimeout(() => {this.afAuth.auth.signOut().then(
       () => {
-        this.uiService.showSnackbar('Logged Out!', null, 3000);
       }
-    );
+    ); }, 500);
   }
 
   isAuth() {
