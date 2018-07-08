@@ -2,7 +2,7 @@
   padding: 30px;
 }
 .scroll-slow {
-  width: 400px;
+  width: 300px;
   height: 50px;
   overflow: hidden;
   position: relative;
@@ -21,9 +21,9 @@
   -webkit-transform:translateX(100%);
   transform:translateX(100%);
   /* Apply animation to this element */
-  -moz-animation: scroll-slow 10s linear infinite;
-  -webkit-animation: scroll-slow 10s linear infinite;
-  animation: scroll-slow 10s linear infinite;
+  -moz-animation: scroll-slow 13s linear infinite;
+  -webkit-animation: scroll-slow 13s linear infinite;
+  animation: scroll-slow 13s linear infinite;
 }
 /* Move it (define the animation) */
 @-moz-keyframes scroll-slow {
