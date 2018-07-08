@@ -48,7 +48,7 @@ export class AuthService {
       .createUserWithEmailAndPassword(authData.email, authData.password)
       .then(result => {
         this.uiService.loadingStateChanged.next(false);
-        this.uiService.showSnackbar('Registered SuccessFully! & Logged In!', null, 3000);
+        this.uiService.showSnackbar('Registered SuccessFully', null, 3000);
         this.afStuff.createNewUser(authData.email);
         setTimeout(() => {
           this.tempUser = this.afStuff.getUserFromFireBase();
@@ -56,12 +56,14 @@ export class AuthService {
             (data) => {console.log(data); }
           );
         }, 1500 );
+        setTimeout(() => {this.logout();
+          this.uiService.showSnackbar('Please Log In With Email & Password', null, 3000); }, 4000 );
       })
       .catch(error => {
         this.uiService.loadingStateChanged.next(false);
         this.uiService.showSnackbar(error.message, null, 3000);
       });
-  }
+     }
 
   login(authData: AuthData) {
     this.uiService.loadingStateChanged.next(true);

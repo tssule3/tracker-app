@@ -18,8 +18,8 @@ export class AngularFireStuffService {
     this.userCollection = afs.collection<UserModel>('user');
   }
   createNewUser(email: string) {
-    this.userCollection.add({id: '', firstName: 'default',
-      lastName: 'default', mobile: '90XX', age: null, email: email,
+    this.userCollection.add({id: '', firstName: 'Enter Name',
+      lastName: 'Enter Last Name', mobile: 'Enter Mobile', age: null, email: email,
       imagePath: 'https://firebasestorage.googleapis.com/v0/b/tracker-app-c17a0.appspot.com/o/4762default-profile.png?alt=media&token=3b766a5a-3e40-48ac-b765-1a61f1b56fd7'}).then();
       // this.getUserFromFireBase();
   }

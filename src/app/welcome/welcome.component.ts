@@ -8,7 +8,8 @@ import {MatSnackBar} from '@angular/material';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor(private snack: MatSnackBar) {this.snack.open('Welcome To Fitness Tracker App', null, {duration: 1500} );
+  constructor(private snack: MatSnackBar) {
+    setTimeout(() => {this.snack.open('Welcome To Fitness Tracker App', null, {duration: 1500} );}, 3000);
   }
 
   ngOnInit() {
