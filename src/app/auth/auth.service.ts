@@ -8,17 +8,23 @@ import { User } from './user.model';
 import { AuthData } from './auth-data.model';
 import { TrainingService } from '../training/training.service';
 import { UiService } from '../shared/ui.service';
+import {AngularFireStuffService} from '../angular-fire-stuff.service';
+import {Observable} from 'rxjs';
+import {UserModel} from '../profile/user.model';
 
 @Injectable()
 export class AuthService {
+  tempUser1: Observable<UserModel>;
   authChange = new Subject<boolean>();
+  authDataEmail = new Subject<string>();
   private isAuthenticated = false;
-
+   tempUser: Observable<UserModel[]>;
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
     private trainingService: TrainingService,
-    private uiService: UiService
+    private uiService: UiService,
+    private afStuff: AngularFireStuffService
   ) {}
 
   initAuthListener() {
@@ -43,6 +49,13 @@ export class AuthService {
       .then(result => {
         this.uiService.loadingStateChanged.next(false);
         this.uiService.showSnackbar('Registered SuccessFully! & Logged In!', null, 3000);
+        this.afStuff.createNewUser(authData.email);
+        setTimeout(() => {
+          this.tempUser = this.afStuff.getUserFromFireBase();
+          this.tempUser.subscribe(
+            (data) => {console.log(data); }
+          );
+        }, 1500 );
       })
       .catch(error => {
         this.uiService.loadingStateChanged.next(false);
@@ -57,6 +70,10 @@ export class AuthService {
       .then(result => {
         this.uiService.loadingStateChanged.next(false);
         this.uiService.showSnackbar('Logged In SuccessFully!', null, 3000);
+        setTimeout(() => {
+         this.afStuff.getUserDocFromFireBase(authData.email);
+         this.authDataEmail.next(authData.email);
+        }, 2000 );
       })
       .catch(error => {
         this.uiService.loadingStateChanged.next(false);

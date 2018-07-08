@@ -1,80 +1,62 @@
 <mat-accordion>
-  <mat-expansion-panel >
+  <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
         Personal data
       </mat-panel-title>
-
     </mat-expansion-panel-header>
-    <mat-grid-list cols="2" rowHeight="400px" fxHide.xs>
-      <mat-grid-tile class="firstDiv">
-        <section >
-          <mat-form-field>
-            <input matInput placeholder="First name">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <input matInput placeholder="Age">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <input matInput placeholder="Email">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <input matInput placeholder="Mobile">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-      <textarea matInput name="address1" id="address1" placeholder="Address"
-                cols="10" rows="1"></textarea>
-          </mat-form-field>
-          <br>
-          <button mat-raised-button color="primary">Update</button>
+    <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+           <mat-accordion>
+             <mat-expansion-panel>
+               <mat-expansion-panel-header>
+                 <mat-panel-title>Update Data</mat-panel-title>
+               </mat-expansion-panel-header>
+               <form>
+                 <div class="row" *ngFor="let usr of newUser">
+                   <div class="col-md-6">
+                     <input type="text" class="form-control" disabled
+                            placeholder="ID" name="id" [(ngModel)]="getUserId"><br>
+                     <input type="text" class="form-control"
+                            placeholder="First Name" name="firstName" [(ngModel)]="usr.firstName"><br>
+                     <input type="text" class="form-control"
+                            placeholder="Last Name" name="lastName" [(ngModel)]="usr.lastName"><br>
+                     <input type="number" class="form-control"
+                            placeholder="Age" name="age" [(ngModel)]="usr.age"><br>
+                     <input type="text" class="form-control"
+                            placeholder="Mobile" name="mobile" [(ngModel)]="usr.mobile"><br>
+                     <input type="text" class="form-control" disabled
+                            placeholder="Email" name="email" [(ngModel)]="usr.email"><br>
 
-        </section>
+                   </div>
+                   <div class="col-md-6">
+                     <div class="row">
+                       <div class="col-md-6" >
+                         <img src="{{usr.imagePath}}" width="200px" alt="{{usr.firstName}}"><br>
+                       </div>
+                       <div class="col-md-6">
+                         <label class="btn btn-primary btn-block mt-4">
+                           Browse <input type="file" style="display: none;" (change)="uploadFile($event)">
+                         </label>
+                         <button class="btn btn-block btn-success" [disabled]="btnDisabled" (click)="updateImg()">Update Image</button>
+                       </div>
+                     </div>
+                     <br>
+                     <button mat-raised-button color="primary"
+                             class="btn btn-block" (click)="updateDetails(usr)">Save</button>
+                   </div>
+                 </div>
+               </form>
+             </mat-expansion-panel>
+           </mat-accordion>
+         </div>
 
-      </mat-grid-tile>
 
-      <mat-grid-tile class="secondDiv">
-
-      </mat-grid-tile>
-    </mat-grid-list>
-    <!--Smaller Displays-->
-    <mat-grid-list cols="1" rowHeight="400px" fxShow.xs fxHide.gt-xs>
-      <mat-grid-tile class="smallDiv1">
-        <section >
-          <mat-form-field>
-            <input matInput placeholder="First name">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <input matInput placeholder="Age">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <input matInput placeholder="Email">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <input matInput placeholder="Mobile">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-      <textarea matInput name="address2" id="address2" placeholder="Address"
-                cols="10" rows="1"></textarea>
-          </mat-form-field>
-          <br>
-          <button mat-raised-button color="primary">Update</button>
-
-        </section>
-
-      </mat-grid-tile>
-
-      <mat-grid-tile class="smallDiv2">
-        <h1>2</h1>
-      </mat-grid-tile>
-    </mat-grid-list>
+      </div>
+    </div>
   </mat-expansion-panel>
 
 </mat-accordion>
+<button (click)="getuser()">get</button>
+<button (click)="deleteImage()">Delete</button>
